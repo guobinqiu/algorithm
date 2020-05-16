@@ -38,7 +38,3 @@ func (q *Queue) Clear() {
 func (q *Queue) Size() int {
 	return q.l.Len()
 }
-
-func (q *Queue) PrintList() {
-	q.l.Print()
-}
