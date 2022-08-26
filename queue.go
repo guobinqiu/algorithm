@@ -1,16 +1,12 @@
-package queue
-
-import (
-	"algorithm/list"
-)
+package algorithm
 
 type Queue struct {
-	l *list.List
+	l *List
 }
 
-func New() *Queue {
+func NewQueue() *Queue {
 	return &Queue{
-		l: list.New(),
+		l: NewList(),
 	}
 }
 

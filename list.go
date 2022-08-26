@@ -1,4 +1,4 @@
-package list
+package algorithm
 
 import "fmt"
 
@@ -14,7 +14,7 @@ type List struct {
 	size int
 }
 
-func New() *List {
+func NewList() *List {
 	return &List{}
 }
 

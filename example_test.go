@@ -1,32 +1,30 @@
-package main
+package algorithm
 
 import (
-	"github.com/guobinqiu/algorithm/queue"
-	"github.com/guobinqiu/algorithm/stack"
-	"github.com/guobinqiu/algorithm/tree"
 	"fmt"
+	"testing"
 )
 
-func main() {
+func TestExample(t *testing.T) {
 	root := makeTree()
 
 	//深度优先遍历
-	s := stack.New()
+	s := NewStack()
 	DFSTraversal(s, root) //expect: abdecf
 
 	//广度优先遍历
-	q := queue.New()
+	q := NewQueue()
 	BFSTraversal(q, root) //expect: abcdef
 }
 
 //构造一颗树
-func makeTree() *tree.TreeNode {
-	a := tree.NewNode("a")
-	b := tree.NewNode("b")
-	c := tree.NewNode("c")
-	d := tree.NewNode("d")
-	e := tree.NewNode("e")
-	f := tree.NewNode("f")
+func makeTree() *TreeNode {
+	a := NewNode("a")
+	b := NewNode("b")
+	c := NewNode("c")
+	d := NewNode("d")
+	e := NewNode("e")
+	f := NewNode("f")
 
 	a.AddChild(b)
 	a.AddChild(c)
@@ -37,14 +35,14 @@ func makeTree() *tree.TreeNode {
 	return a
 }
 
-func DFSTraversal(s *stack.Stack, root *tree.TreeNode) {
+func DFSTraversal(s *Stack, root *TreeNode) {
 	s.Push(root)
 	for {
 		if s.IsEmpty() {
 			break
 		}
 
-		node := s.Pop().(*tree.TreeNode)
+		node := s.Pop().(*TreeNode)
 
 		fmt.Println(node.GetData())
 
@@ -54,14 +52,14 @@ func DFSTraversal(s *stack.Stack, root *tree.TreeNode) {
 	}
 }
 
-func BFSTraversal(q *queue.Queue, root *tree.TreeNode) {
+func BFSTraversal(q *Queue, root *TreeNode) {
 	q.Enqueue(root)
 	for {
 		if q.IsEmpty() {
 			break
 		}
 
-		node := q.Dequeue().(*tree.TreeNode)
+		node := q.Dequeue().(*TreeNode)
 
 		fmt.Println(node.GetData())
 
@@ -71,9 +69,9 @@ func BFSTraversal(q *queue.Queue, root *tree.TreeNode) {
 	}
 }
 
-func reverse(a []*tree.TreeNode) []*tree.TreeNode {
+func reverse(a []*TreeNode) []*TreeNode {
 	l := len(a)
-	b := make([]*tree.TreeNode, l)
+	b := make([]*TreeNode, l)
 	for i, v := range a {
 		b[l-1-i] = v
 	}

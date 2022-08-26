@@ -1,14 +1,12 @@
-package stack
-
-import "algorithm/list"
+package algorithm
 
 type Stack struct {
-	l *list.List
+	l *List
 }
 
-func New() *Stack {
+func NewStack() *Stack {
 	return &Stack{
-		l: list.New(),
+		l: NewList(),
 	}
 }
 
